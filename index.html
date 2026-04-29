@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="ru" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Күмүш-Азиз</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&amp;family=Nunito:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Playfair Display', 'serif'],
+            body: ['Nunito', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html, body { height: 100%; margin: 0; }
+    * { box-sizing: border-box; }
+    .menu-card:hover .menu-img { transform: scale(1.08); }
+    .menu-card:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+    .banner-slide { animation: fadeSlide 12s infinite; opacity: 0; position: absolute; inset: 0; }
+    .banner-slide:nth-child(1) { animation-delay: 0s; }
+    .banner-slide:nth-child(2) { animation-delay: 4s; }
+    .banner-slide:nth-child(3) { animation-delay: 8s; }
+    @keyframes fadeSlide {
+      0%, 25% { opacity: 1; }
+      33%, 100% { opacity: 0; }
+    }
+    .cat-btn.active { background: #b45309; color: #fff; }
+    .fade-in { animation: fadeUp 0.5s ease forwards; opacity: 0; transform: translateY(16px); }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    .social-icon:hover { transform: translateY(-3px) scale(1.1); }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-thumb { background: #b4530980; border-radius: 4px; }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app-wrapper" class="w-full h-full overflow-auto bg-stone-50 font-body text-stone-800"><!-- NAVBAR -->
+   <nav id="navbar" class="sticky top-0 z-50 bg-stone-900/95 backdrop-blur-md shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between"><a href="#hero" class="font-heading text-2xl font-bold text-amber-400 tracking-wide" id="nav-logo">Күмүш-Азиз</a>
+     <div class="hidden md:flex gap-6 text-sm font-semibold text-stone-300"><a href="#menu" class="hover:text-amber-400 transition">Меню</a> <a href="#about" class="hover:text-amber-400 transition">О нас</a> <a href="#contact" class="hover:text-amber-400 transition">Контакты</a>
+     </div><button id="mob-btn" class="md:hidden text-stone-300 p-1"><i data-lucide="menu" class="w-6 h-6"></i></button>
+    </div>
+    <div id="mob-menu" class="hidden md:hidden bg-stone-800 px-4 pb-4 flex flex-col gap-3 text-stone-300 text-sm font-semibold"><a href="#menu" class="hover:text-amber-400">Меню</a> <a href="#about" class="hover:text-amber-400">О нас</a> <a href="#contact" class="hover:text-amber-400">Контакты</a>
+    </div>
+   </nav><!-- HERO BANNER -->
+   <section id="hero" class="relative w-full overflow-hidden" style="height: 520px;">
+    <div class="banner-slide"><img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=1400&amp;q=80" alt="Цыпленок на гриле" class="w-full h-full object-cover" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#78350f,#451a03)'; this.alt='Баннер';">
+     <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+    </div>
+    <div class="banner-slide"><img src="https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=1400&amp;q=80" alt="Куриные крылья" class="w-full h-full object-cover" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#78350f,#451a03)'; this.alt='Баннер';">
+     <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+    </div>
+    <div class="banner-slide"><img src="https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=1400&amp;q=80" alt="Куриный шницель" class="w-full h-full object-cover" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#78350f,#451a03)'; this.alt='Баннер';">
+     <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+    </div>
+    <div class="absolute inset-0 flex flex-col justify-center items-start px-6 md:px-16 z-10">
+     <h1 id="hero-title" class="font-heading text-5xl md:text-7xl font-extrabold text-white drop-shadow-xl leading-tight">Күмүш-Азиз</h1>
+     <p id="hero-sub" class="mt-3 text-xl md:text-2xl text-amber-300 font-semibold drop-shadow-lg">Вкус, который вдохновляет</p><a href="#menu" class="mt-8 inline-block bg-amber-600 hover:bg-amber-700 text-white font-bold px-8 py-3 rounded-full shadow-lg transition transform hover:scale-105">Смотреть меню</a>
+    </div>
+   </section><!-- MENU -->
+   <section id="menu" class="max-w-7xl mx-auto px-4 py-16">
+    <h2 class="font-heading text-4xl font-bold text-center text-stone-900 mb-2">Наше Меню</h2>
+    <p class="text-center text-stone-500 mb-10">Свежие продукты · Авторские рецепты · Каждый день</p><!-- Category Tabs -->
+    <div class="flex flex-wrap justify-center gap-2 mb-10" id="cat-tabs"><button class="cat-btn active px-5 py-2 rounded-full text-sm font-bold border-2 border-amber-700 transition" data-cat="chicken">Курица</button> <button class="cat-btn px-5 py-2 rounded-full text-sm font-bold border-2 border-amber-700 text-amber-800 transition hover:bg-amber-100" data-cat="fish">Рыбы</button> <button class="cat-btn px-5 py-2 rounded-full text-sm font-bold border-2 border-amber-700 text-amber-800 transition hover:bg-amber-100" data-cat="salads">Салаты</button> <button class="cat-btn px-5 py-2 rounded-full text-sm font-bold border-2 border-amber-700 text-amber-800 transition hover:bg-amber-100" data-cat="shashlik">Шашлыки</button> <button class="cat-btn px-5 py-2 rounded-full text-sm font-bold border-2 border-amber-700 text-amber-800 transition hover:bg-amber-100" data-cat="icecream">Мороженое</button> <button class="cat-btn px-5 py-2 rounded-full text-sm font-bold border-2 border-amber-700 text-amber-800 transition hover:bg-amber-100" data-cat="drinks">Напитки</button>
+    </div><!-- Menu Grid -->
+    <div id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+   </section><!-- PROMO BANNER -->
+   <section class="w-full relative overflow-hidden" style="height: 340px;"><img src="b.jpg" alt="Промо баннер" class="w-full h-full object-cover" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#78350f,#292524)'; this.alt='Промо';">
+    <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-center px-4">
+     <h3 class="font-heading text-3xl md:text-5xl font-bold text-white mb-3">Бизнес-ланч каждый день</h3>
+     <p class="text-amber-300 text-lg md:text-xl font-semibold mb-6">с 12:00 до 16:00 · от 500 c</p><a href="#contact" class="bg-amber-500 hover:bg-amber-600 text-white font-bold px-8 py-3 rounded-full shadow-lg transition">Забронировать</a>
+    </div>
+   </section><!-- ABOUT -->
+   <section id="about" class="max-w-7xl mx-auto px-4 py-16">
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+     <div class="rounded-2xl overflow-hidden shadow-xl" style="height: 380px;"><img src="kumush.jpg" alt="Шеф-повар" class="w-full h-full object-cover" loading="lazy" onerror="this.style.background='#78350f'; this.alt='О нас';">
+     </div>
+     <div>
+      <h2 class="font-heading text-4xl font-bold text-stone-900 mb-4">О нашем кафе</h2>
+    <p class="text-stone-600 leading-relaxed mb-4">Күмүш-Азиз — это уютное место, где сочетаются авторская кухня, тёплая атмосфера и лучшие ингредиенты. Наш шеф-повар создаёт блюда с любовью к каждой детали.</p>
+      <p class="text-stone-600 leading-relaxed mb-6">Мы готовим на открытом огне, используем фермерские продукты и предлагаем меню на любой вкус — от нежной курицы до сочных шашлыков.</p>
+      <div class="flex gap-8">
+       <div class="text-center">
+        <span class="block text-3xl font-bold text-amber-700">10+</span><span class="text-stone-500 text-sm">лет опыта</span>
+       </div>
+       <div class="text-center">
+        <span class="block text-3xl font-bold text-amber-700">25+</span><span class="text-stone-500 text-sm">блюд</span>
+       </div>
+       <div class="text-center">
+        <span class="block text-3xl font-bold text-amber-700">4K+</span><span class="text-stone-500 text-sm">гостей</span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- CONTACT -->
+   <section id="contact" class="bg-stone-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4">
+     <h2 class="font-heading text-4xl font-bold text-center mb-10 text-amber-400">Контакты</h2>
+     <div class="grid md:grid-cols-3 gap-8 text-center">
+      <div class="bg-stone-800 rounded-2xl p-8 shadow-lg"><i data-lucide="map-pin" class="w-10 h-10 mx-auto text-amber-400 mb-4"></i>
+       <h4 class="font-bold text-lg mb-2">Адрес</h4>
+       <p id="addr-text" class="text-stone-400">ул. Күмүш-Азиз, 1</p>
+      </div>
+      <div class="bg-stone-800 rounded-2xl p-8 shadow-lg"><i data-lucide="phone" class="w-10 h-10 mx-auto text-amber-400 mb-4"></i>
+       <h4 class="font-bold text-lg mb-2">Телефон</h4>
+       <p id="phone-text" class="text-stone-400">+996 706 26 60 60</p>
+      </div>
+      <div class="bg-stone-800 rounded-2xl p-8 shadow-lg"><i data-lucide="clock" class="w-10 h-10 mx-auto text-amber-400 mb-4"></i>
+       <h4 class="font-bold text-lg mb-2">Время работы</h4>
+       <p class="text-stone-400">Пн–Вс: 10:00 — 24:00</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- FOOTER -->
+   <footer class="bg-stone-950 text-stone-400 py-10">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+     <p class="font-heading text-xl font-bold text-amber-400" id="footer-logo">Күмүш-Азиз</p>
+     <div class="flex gap-5"><a href="https://instagram.com/kumush_aziz" target="_blank" rel="noopener noreferrer" class="social-icon inline-flex items-center justify-center w-11 h-11 rounded-full bg-stone-800 hover:bg-amber-600 transition text-white"><i data-lucide="instagram" class="w-5 h-5"></i></a>  <a href="https://whatsapp.com/+996 706 26 60 60" target="_blank" rel="noopener noreferrer" class="social-icon inline-flex items-center justify-center w-11 h-11 rounded-full bg-stone-800 hover:bg-amber-600 transition text-white"><i data-lucide="send" class="w-5 h-5"></i></a> 
+     </div>
+     <p class="text-sm">© 2026 Күмүш-Азиз. Все права защищены.</p>
+    </div>
+   </footer>
+  </div>
+  <script>
+const menuData = {
+  chicken: [
+    { name: "Курица гриль", desc: "Сочная курица на углях с травами", price: "850 с", img: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=500&q=80" },
+    { name: "Цыпленок", desc: "Табака", price: "900 с", img: "tabaka.jpg?w=500&q=80" },
+  ],
+  fish: [
+    { name: "Гарбуша", desc: "Гарбуша", price: "700 с", img: "chikken.jpg?w=500&q=80" },
+    { name: "Минтай", desc: "Минтай", price: "800 с", img: "mintay.jpg?w=500&q=80" },
+    { name: "Форель", desc: "Форель", price: "900 с", img: "forel.jpg?w=500&q=80" },
+  ],
+  salads: [
+    { name: "Цезарь с курицей", desc: "Классический Цезарь с пармезаном", price: "200 с", img: "https://images.unsplash.com/photo-1546793665-c74683f339c1?w=500&q=80" },
+    { name: "Оливье", desc: "Оливье", price: "250 с", img: "oliv.jpg?w=500&q=80" },
+    { name: "Гнездо", desc: "Гнездо", price: "300 с", img: "gnezdo.jpg?w=500&q=80" },
+    { name: "Острый", desc: "Острый", price: "200 с", img: "ost.jpg?w=500&q=80" },
+    { name: "Шакарап", desc: "Шакарап", price: "200 с", img: "shakarap.jpg?w=500&q=80" },
+    { name: "Винигред", desc: "Винигред", price: "200 с", img: "vinigred.jpg?w=500&q=80" },
+    { name: "Морковка по-корейски", desc: "Морковка по-корейски", price: "170 с", img: "morkva.jpg?w=500&q=80" },
+  ],
+  shashlik: [
+    { name: "Шашлык из баранины", desc: "Шашлык из баранины", price: "180 с", img: "sheep.jpg?w=500&q=80" },
+    { name: "Кусковой", desc: "Кусковой", price: "200 с", img: "kus.jpg?w=500&q=80" },
+    { name: "Люля-кебаб", desc: "Сочный кебаб ", price: "170 с", img: "lula.jpg?w=500&q=80" },
+     { name: "Куринный  шашлык", desc: "Куринный шашлык", price: "160 с", img: "kur.jpg?w=500&q=80" },
+      { name: "Шашлык из печени", desc: "Шашлык из печени ", price: "150 с", img: "pech.jpg?w=500&q=80" },
+       { name: "Шашлык из Утинной грудки", desc: "Шашлык из утинной грудки", price: "160 с", img: "duck.jpg?w=500&q=80" },
+
+  ],
+  icecream: [
+    { name: "Ванильное мороженое", desc: "Ванильное мороженое", price: "150 с", img: "vanil.jpg?w=500&q=80" },
+    { name: "Шоколадный сорбет", desc: "Насыщенный шоколадный вкус без молока", price: "150 с", img: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=500&q=80" },
+    { name: "Фруктовое ассорти", desc: "Манго, клубника и маракуйя", price: "170 с", img: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=500&q=80" },
+  ],
+  drinks: [
+    { name: "Малиновый компот", desc: "Компот", price: "250 с", img: "raspberry.jpg?w=500&q=80" },
+    { name: "Pepsi", desc: "2Л", price: "150 с", img: "pepsi.jpg?w=500&q=80" },
+    { name: "Coca Cola", desc: "2Л", price: "155 с", img: "cola.jpg?w=500&q=80" },
+     { name: "Sprite", desc: "2Л", price: "150 с", img: "sprite.jpg?w=500&q=80" },
+      { name: "Fanta", desc: "2Л", price: "150 с", img: "fanta.jpg?w=500&q=80" },
+       { name: "Домашний лимонад", desc: "Лимон, мята и тростниковый сахар", price: "200 с", img: "https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=500&q=80" },
+        { name: "Piala", desc: "1Л", price: "100 с", img: "piala.jpg?w=500&q=80" },
+         { name: "Lipton", desc: "1.5Л", price: "150 с", img: "lip.jpg?w=500&q=80" },
+          { name: "Ava", desc: "1Л", price: "105 с", img: "ava.jpg?w=500&q=80" },
+  ]
+};
+
+let currentCat = 'chicken';
+
+function renderMenu(cat) {
+  currentCat = cat;
+  const grid = document.getElementById('menu-grid');
+  grid.innerHTML = '';
+  document.querySelectorAll('.cat-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.cat === cat);
+    if (b.dataset.cat !== cat) {
+      b.classList.add('text-amber-800');
+    } else {
+      b.classList.remove('text-amber-800');
+    }
+  });
+  menuData[cat].forEach((item, i) => {
+    const card = document.createElement('div');
+    card.className = 'menu-card bg-white rounded-2xl overflow-hidden shadow-md transition-all duration-300 fade-in';
+    card.style.animationDelay = `${i * 0.1}s`;
+    card.innerHTML = `
+      <div class="overflow-hidden" style="height:220px">
+        <img src="${item.img}" alt="${item.name}" class="menu-img w-full h-full object-cover transition-transform duration-500" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#d97706,#78350f)'; this.alt='Фото блюда';">
+      </div>
+      <div class="p-5">
+        <div class="flex justify-between items-start mb-2">
+          <h3 class="font-heading text-lg font-bold text-stone-900">${item.name}</h3>
+          <span class="text-amber-700 font-bold text-lg whitespace-nowrap ml-3">${item.price}</span>
+        </div>
+        <p class="text-stone-500 text-sm">${item.desc}</p>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+document.getElementById('cat-tabs').addEventListener('click', e => {
+  const btn = e.target.closest('.cat-btn');
+  if (btn) renderMenu(btn.dataset.cat);
+});
+
+document.getElementById('mob-btn').addEventListener('click', () => {
+  document.getElementById('mob-menu').classList.toggle('hidden');
+});
+document.getElementById('mob-menu').addEventListener('click', e => {
+  if (e.target.tagName === 'A') document.getElementById('mob-menu').classList.add('hidden');
+});
+
+renderMenu('chicken');
+lucide.createIcons();
+
+// Element SDK
+const defaultConfig = {
+  cafe_name: "Күмүш-Азиз",
+  hero_subtitle: "Вкус, который вдохновляет",
+  address_text: "ул. Күмүш-Азиз, 1",
+  phone_text: "+996 706 26 60 60 ",
+  background_color: "#fafaf9",
+  surface_color: "#ffffff",
+  text_color: "#1c1917",
+  primary_action_color: "#b45309",
+  secondary_action_color: "#292524",
+  font_family: "Playfair Display",
+  font_size: 16
+};
+
+function applyConfig(c) {
+  const name = c.cafe_name || defaultConfig.cafe_name;
+  document.getElementById('nav-logo').textContent = name;
+  document.getElementById('hero-title').textContent = name;
+  document.getElementById('footer-logo').textContent = name;
+  document.getElementById('hero-sub').textContent = c.hero_subtitle || defaultConfig.hero_subtitle;
+  document.getElementById('addr-text').textContent = c.address_text || defaultConfig.address_text;
+  document.getElementById('phone-text').textContent = c.phone_text || defaultConfig.phone_text;
+
+  const bg = c.background_color || defaultConfig.background_color;
+  const surface = c.surface_color || defaultConfig.surface_color;
+  const txt = c.text_color || defaultConfig.text_color;
+  const primary = c.primary_action_color || defaultConfig.primary_action_color;
+  const secondary = c.secondary_action_color || defaultConfig.secondary_action_color;
+
+  document.getElementById('app-wrapper').style.backgroundColor = bg;
+  document.getElementById('app-wrapper').style.color = txt;
+
+  document.querySelectorAll('.menu-card').forEach(el => el.style.backgroundColor = surface);
+  document.querySelectorAll('.cat-btn.active').forEach(el => { el.style.backgroundColor = primary; el.style.borderColor = primary; });
+  document.querySelectorAll('.cat-btn:not(.active)').forEach(el => { el.style.borderColor = primary; el.style.color = primary; });
+
+  const font = c.font_family || defaultConfig.font_family;
+  document.querySelectorAll('.font-heading, [class*="font-heading"]').forEach(el => {
+    el.style.fontFamily = `${font}, Playfair Display, serif`;
+  });
+  const sz = c.font_size || defaultConfig.font_size;
+  document.getElementById('app-wrapper').style.fontSize = sz + 'px';
+}
+
+if (window.elementSdk) {
+  window.elementSdk.init({
+    defaultConfig,
+    onConfigChange: async (config) => { applyConfig(config); },
+    mapToCapabilities: (config) => ({
+      recolorables: [
+        { get: () => config.background_color || defaultConfig.background_color, set: v => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+        { get: () => config.surface_color || defaultConfig.surface_color, set: v => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+        { get: () => config.text_color || defaultConfig.text_color, set: v => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+        { get: () => config.primary_action_color || defaultConfig.primary_action_color, set: v => { config.primary_action_color = v; window.elementSdk.setConfig({ primary_action_color: v }); } },
+        { get: () => config.secondary_action_color || defaultConfig.secondary_action_color, set: v => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); } },
+      ],
+      borderables: [],
+      fontEditable: {
+        get: () => config.font_family || defaultConfig.font_family,
+        set: v => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+      },
+      fontSizeable: {
+        get: () => config.font_size || defaultConfig.font_size,
+        set: v => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+      }
+    }),
+    mapToEditPanelValues: (config) => new Map([
+      ["cafe_name", config.cafe_name || defaultConfig.cafe_name],
+      ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+      ["address_text", config.address_text || defaultConfig.address_text],
+      ["phone_text", config.phone_text || defaultConfig.phone_text],
+    ])
+  });
+}
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9edc7e4583207049',t:'MTc3NjQ0MDA2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
